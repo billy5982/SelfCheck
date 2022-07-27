@@ -1,0 +1,19 @@
+{
+  "name": "selfcheck",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billy5982/SelfCheck.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/billy5982/SelfCheck/issues"
+  },
+  "homepage": "https://github.com/billy5982/SelfCheck#readme"
+}
