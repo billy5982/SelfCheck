@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div id="root"></div>
+</body>
+    <!-- react 연결 -->
+    <script src = 'https://unpkg.com/react@17.0.2/umd/react.production.min.js'></script>
+    <script src = 'https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js'></script>
+    <!-- 아래 스크립트에선 react 사용 가능 -->
+    <!-- HTML에 직접 앨리먼트를 작성하지 않는다는 것이 react 특징 -->
+    <script>
+        //react로 앨리먼트를 만드는 어려운 방법
+        const root = document.getElementById('root')
+        // 1번째인자 : 만들고 싶은 태그, 2인자 : 1인자에 넣을 attribute: class,id,style 등등,3번째 인자 content 내용
+        const h3 = React.createElement('h1',
+        {onMouseEnter : ()=>console.log('mouse enter')},
+        'Htllo i m<> span'); 
+        const btn = React.createElement('button',{
+           id : "title", onClick : ()=> console.log('im clicked')
+        },'버튼')//2인자는 속성인데, addeventlistener도 줄수 있음
+        const container = React.createElement('div',null,[h3,btn]) // 3인자에 cotainer의 자식요소로 []을 이용해span과 btn을 넣을수 있음
+        ReactDOM.render(container,root);
+    </script>
+</html>
