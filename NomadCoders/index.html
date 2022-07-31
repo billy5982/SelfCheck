@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div id="root"></div>
+</body>
+    <!-- react 연결 -->
+    <script src = 'https://unpkg.com/react@17.0.2/umd/react.production.min.js'></script>
+    <script src = 'https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js'></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        //JSX - javascript 확장문법
+        const root = document.getElementById('root')
+        const App = () =>{ 
+        //useState 사용 시 [undefined,function()?] 사용할 data임, function은 data를 바꿀때 사용하는 것. 
+        //useState에 두번째 인자는 함수이며, 함수 호출 시 호출되는 인자로 데이터를 리렌더링을 해줌   
+        //구조분해할당, spread?
+        let i = 0;
+        const [counter,setCounter] = React.useState(0);  //useState 인자를 적어주면, 초기값을 가지며, []문법 사용시 counter와 onclick에 useState[0],useState[1]등록 가능
+        const onclick = ()=>{
+            setCounter(i+1);
+            console.log(counter) // 직접 렌더링을 다시 해주지 않고 useState의 인자를 통해 클릭 이벤트 발생시 counter+1해준 후 리렌더링을 해준다.
+        }
+        const onclick0 = ()=>{
+            setCounter(0);
+            console.log(counter);
+        }
+        return (
+            <div>
+                <h3>Total clicks : {counter}</h3>
+                <button onClick={onclick}>Click</button> 
+                <button onClick={onclick0}>Click</button> 
+            </div>
+                )}
+             
+        ReactDOM.render(<App/>,root);  // 랜더링은 한번만 되기 때문에 클릭마다 랜더를 다시 해줘야함.
+
+
+        // const root = document.getElementById('root')
+        // let counter = 0;
+        // function countUp(){
+        //     counter = counter +1;
+        //      // 이벤트가 발생(카운터+1)될때마다 화면에 다시 표시해줘야함. 
+        //      // 클릭 이벤트가 발생되면, container 자체를 다시 표시하기 때문에 변경된 카운터가 업데이트됨
+        //     render();
+        // }
+        // function render(){
+        // ReactDOM.render(<Container/>,root);  // 랜더링은 한번만 되기 때문에 클릭마다 랜더를 다시 해줘야함.
+        // }
+        // const Container = () => 
+        //     (
+        //     <div>
+                
+        //         <h3>Total clicks : {counter}</h3>
+        //         <button onClick={countUp}>Click</button>
+        //     </div>
+        //     )
+        //   render();
+        </script>
+</html>
