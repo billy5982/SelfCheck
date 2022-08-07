@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div id="root"></div>
+</body>
+    <!-- react 연결 -->
+    <script src = 'https://unpkg.com/react@17.0.2/umd/react.production.min.js'></script>
+    <script src = 'https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js'></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // 부모속성에서 전달받은 속성은 Btn 컴포넌트의 인자로 들어가게 됨. 인자는 하나만 존재. 여러개의 속성이여도 한 객체로 묶여서 들어오게 된다.
+      // 예) 전달받은 속성이 {banana = 'saveChanges', ap = '1'} 
+      // props에는 {banana = 'SaveChanges'}가 할당되며 props.banana로 해당 속성을 확인할 수 있음 
+      // 인자로 ({banana}) 이런식으로 받으면 props.banana가 아닌 banana를 사용할 수 있음 banana = 'saveChanges'
+      const Btn = (props)=>{
+        // 스타일을 적용할 때는 중괄호 두개로 감쌀것 js에서 스타일을 주는 것처럼 적용! JS object 작성방법처럼 작성할 것.
+        return <button style = {{
+            backgroundColor : 'tomato',
+            color : 'white',
+            padding : '10px 10px',
+            border : 0,
+            borderRadius : 10,
+        }}>
+        {props.banana}
+        </button>
+      }
+
+      //{}를 이용해서 전달받는 속성을 기재하면 값을 꺼내올 수 있음.
+      //이처럼 사용하려면 {내용은 전달받는 속성명이 되어야함.} 속성이 두개라면 인자를 2개 적어서 둘의 값을 둘다 받아올 수 있음.
+      const Btn2 = ({banana})=>{
+        // 스타일을 적용할 때는 중괄호 두개로 감쌀것 js에서 스타일을 주는 것처럼 적용! JS object 작성방법처럼 작성할 것.
+        return <button style = {{
+            backgroundColor : 'tomato',
+            color : 'white',
+            padding : '10px 10px',
+            border : 0,
+            borderRadius : 10,
+        }}>
+        {banana}
+        </button>
+      }
+
+    // 아래처럼 직접 style을 적용해줄 수 있지만 동일할 경우 다른 방법을 사용할 수 있음.
+    //   const Confirm = ()=>{
+    //     return <button style = {{
+    //         backgroundColor : 'tomato',
+    //         color : 'white',
+    //         padding : '10px 10px',
+    //         border : 0,
+    //         borderRadius : 10,}}>
+    //         Confirm
+    //         </button>
+    //   }
+
+       
+        const App = () =>{ 
+      
+        return (
+            <div>
+                {/*부모요소에서 컴포넌트에 속성을 전달해줄 수 있음 해당 속성은 자식요소 컴포넌트의 인자로 전달 받을 수 있음.{banana = "Save Change"} 객체로 전달됨.*/}
+                {/*속성을 통해 같은 컴포넌트지만 다른 액션을 해줄 수 있음..*/}
+                <Btn banana='Save Change'/>
+                <Btn banana= '1'/>
+                <Btn2 banana = 'confirm'/>
+            </div>
+        )}
+             
+        ReactDOM.render(<App/>,root);  // 랜더링은 한번만 되기 때문에 클릭마다 랜더를 다시 해줘야함.
+
+        </script>
+</html>
