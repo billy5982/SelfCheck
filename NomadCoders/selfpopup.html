@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div id="root"></div>
+</body>
+    <!-- react 연결 -->
+    <script src = 'https://unpkg.com/react@17.0.2/umd/react.production.min.js'></script>
+    <script src = 'https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js'></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      
+        const App = () =>{ 
+        // 팝업창은 숨겨진 창과 숨겨지지 않은 창으로 구분하고
+        // 버튼을 누르면 팝업창이 표시가 되야한다.
+        const [display,setDisplay] = React.useState(false);
+        
+        const popUp = () =>{
+            setDisplay(!display);
+        }
+        const PopupWindow = () =>{
+            return (
+                <div>
+                    <h3>this is popup2</h3>
+                    <button onClick={popUp}>Click me</button>    
+                </div>
+            )
+        }
+        
+        return (
+            <div className = 'container'>
+                <h3>Fix m to open Pop Up</h3>
+                <button onClick = {popUp} disabled = {display}>Click me</button>
+             {/*
+                처음엔 HTML 태그내에 속성을 지정해줘야되는 줄 알았지만
+                그게 아니라 직접 삼항연산자를 이용해서 해당 display라는 값이 true이면 해당값을 보여주고
+                false라면 null로 아무것도 없음을 표현해주면 된다.
+                display가 참이면 해당 div를 보여준다. 거짓이면 null로 보여주지 않는다.
+            */}
+                {display ? (
+                    <div>
+                    <h3>this is popup</h3>
+                    <button onClick = {popUp}>Click me</button> 
+                </div>) : null
+            }
+            {display ? <PopupWindow/>  : null }
+                    
+                
+            </div>
+        )
+            }
+             
+        ReactDOM.render(<App/>,root);  // 랜더링은 한번만 되기 때문에 클릭마다 랜더를 다시 해줘야함.
+
+        </script>
+</html>
