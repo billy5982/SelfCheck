@@ -21,6 +21,7 @@
             padding : '10px 10px',
             border : 0,
             borderRadius : 10,
+            display : props.big ? 'block':'none', //현재 {{}}를 쓰면 js 언어를 사용할 수 있는 상태이기 때문에 전달받은 props의 인자로 사용할 수도 있음.
         }}>
         {props.banana}
         </button>
@@ -60,8 +61,8 @@
             <div>
                 {/*부모요소에서 컴포넌트에 속성을 전달해줄 수 있음 해당 속성은 자식요소 컴포넌트의 인자로 전달 받을 수 있음.{banana = "Save Change"} 객체로 전달됨.*/}
                 {/*속성을 통해 같은 컴포넌트지만 다른 액션을 해줄 수 있음..*/}
-                <Btn banana='Save Change'/>
-                <Btn banana= '1'/>
+                <Btn banana='Save Change' big = {true}/>
+                <Btn banana= 'confirm' big = {false}/>
                 <Btn2 banana = 'confirm'/>
             </div>
         )}
