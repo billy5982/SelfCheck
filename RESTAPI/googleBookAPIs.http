@@ -1,0 +1,22 @@
+get https://www.googleapis.com/books/v1/volumes?q=intitle=숨그네
+# ?q=intitle=숨그네 = query이며 웹 서버에 전달하는 추가 질문임. ?q= 질문 intitle 숨그네를 찾는다.
+# Send Request를 누르면 HTTP API를 통해 google 데이터에 접근할 수 있음
+
+# 추가로 적어주고 싶으면 아래 # 세개 쓰면 됨
+### 
+get https://www.googleapis.com/books/v1/volumes?q=intitle=화해
+# 김초엽에 관한 책에 정보를 api로 접근해서 받아올 수 있음.
+
+###
+get https://yts.mx/api/v2/list_movies.json
+
+
+###
+get https://yts.mx/api/v2/list_movies.json
+?minimum_rating=8.5 
+&sort_by=year
+&limit=1
+# API를 통해 해당 사이트의 데이터를 받아올 수 있음.
+# ?를 통해 조건을 지정할 수 있음. &을 통해 원하는 조건을 이을수 있음. 
+
+#API는 키를 받아 사용해야함. 위에는 키를 안받아도 됐지만 큰 기업의 API의 경우는 키를 받아야됨.
