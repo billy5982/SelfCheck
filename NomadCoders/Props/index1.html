@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div id="root"></div>
+</body>
+    <!-- react 연결 -->
+    <script src = 'https://unpkg.com/react@17.0.2/umd/react.development.js'></script>
+    <script src = 'https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js'></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src='https://unpkg.com/prop-types@15.7.2/prop-types.js'></script>
+    <script type="text/babel">
+
+     //또한 부모컴포넌트에서 자식컴포넌트에게 해당값을 주지 않았다면 함수의 기본값 설정하듯이
+     //props에도 기본값을 설정할 수 있음
+     //{}를 사용해서 값들을 뽑아낸 것 ES6문법
+     // 예 [a,b] = [1,2] let a = 1 let b =1
+     // 예 obj = {name : billy, age:25}  {name,age} = obj, let name = billy, let age = 25
+     // 예 {name , value } ={name : 'billy', value :'15'} let name = 'billy', value = '15' 
+      const Btn = ({text,onClick,textSize=25})=>{
+        
+        return <button style = {{ 
+            backgroundColor : 'tomato',
+            color : 'white',
+            padding : '10px 10px',
+            border : 0,
+            borderRadius : 10,
+            fontSize : textSize,
+        }}
+        onClick ={onClick}>
+        {text}
+        </button>
+      }
+
+       Btn.propTypes = {
+        // Btn 컴포넌트에 전달되는 prop 타입을 정해줄 수 있음.
+        // text라는 props의 값은 string만 전달되고, textSize의 prop 값은 숫자만 전달. 그렇게 되지 않으면 에러발생
+        //isRequired를 사용하면 btn 컴포넌트가 textSize라는 prop을 가지고 있지 않으면 에러 발생 
+        // 컴포넌트에 꼭필요한 속성일 경우에만 required를 사용
+        text : PropTypes.string.isRequired ,
+        textSize : PropTypes.number
+       }
+        const App = () =>{ 
+        const [value,setValue] = React.useState('Save Change')
+        const changeValue = ()=>{setValue('Revert Changes')}
+        return (
+            <div>
+                
+                {/*propstype을 사용하면 전달되는 prop가 어떤 타입인지를 지정해주고 react에서는 prop가 해당 타입이 아니면 에러를 발생시켜줌 script 참고 */}
+                <Btn text ={value} onClick = {changeValue}textSize={18}/>
+                <Btn text ={'continue'} />
+             
+            </div>
+        )}
+             
+        ReactDOM.render(<App/>,root);  // 랜더링은 한번만 되기 때문에 클릭마다 랜더를 다시 해줘야함.
+
+        </script>
+</html>
