@@ -1,0 +1,28 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.buttonForm{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+label{
+    display: inline-block;
+    width: 40px;
+}
+input{
+    width: 600px;
+    height: 20px;
+}
+textarea{
+    width: 600px;
+    height: 80px;
+}
+div>button{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+}
