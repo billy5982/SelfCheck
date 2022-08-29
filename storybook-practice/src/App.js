@@ -39,15 +39,19 @@ border-radius : 10px
 // 다른 곳에서 uu.current.focus() 라던지, uu.current.value() => 인풋에 주소를 넣었다면 document.querySelector 처럼 사용이 가능
 
 function App() {
-
-
+   const ref = useRef(null)
+   console.log(ref)
+   const focusInput = () =>{
+    console.log('이벤트 발생!_!')
+    ref.current.focus()
+   }
   return (
     <div>
     <Colorfuldiv>내가 만든 div</Colorfuldiv>
     <ColorRadiusDiv>상속을 구현한 컴포넌트 입니다.</ColorRadiusDiv>
     <br/>
-    <input type = "text"/>
-    <Button>내가 만든 기린 그림</Button>
+    <input type = "text" ref={ref}/>
+    <Button onClick={focusInput}>내가 만든 기린 그림</Button>
     <PropsButton textSize = '18px' color = 'skyblue'>두개의 속성을 전달받은 버튼입니다</PropsButton>
     <PropsButton textSize = '25px'>텍스트 사이즈만 전달 받은 버튼입니다.</PropsButton>
     <PropsButton color = "yellow">color 속성만 전달 받은 버튼입니다. </PropsButton>
