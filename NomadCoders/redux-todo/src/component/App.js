@@ -6,12 +6,10 @@ import Detail from "../routes/Detail"
 function App() {
     return(
     <BrowserRouter>
-    
             <Routes>
                 <Route path = '/' element ={<Home/>}></Route>
                 <Route path = '/:id' element ={<Detail/>}></Route>
             </Routes>
-   
     </BrowserRouter>
     )
 }
